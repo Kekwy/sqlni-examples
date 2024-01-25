@@ -1,4 +1,4 @@
-package com.kekwy.mybatis.sqlni.examples.entity;
+package com.kekwy.sqlni.example.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

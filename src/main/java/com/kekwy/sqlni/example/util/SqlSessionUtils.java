@@ -1,4 +1,4 @@
-package com.kekwy.mybatis.sqlni.examples.utils;
+package com.kekwy.sqlni.example.util;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
