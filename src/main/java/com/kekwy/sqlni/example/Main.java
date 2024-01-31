@@ -1,5 +1,6 @@
 package com.kekwy.sqlni.example;
 
+
 /**
  * description
  *
@@ -8,4 +9,8 @@ package com.kekwy.sqlni.example;
  * @since 2024/1/19 18:25
  */
 public class Main {
+
+    public static void main(String[] args) {
+    }
+
 }
