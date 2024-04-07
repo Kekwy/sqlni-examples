@@ -1,8 +1,10 @@
 package com.kekwy.sqlni.example.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.*;
+
+import java.util.List;
 
 /**
  * description
@@ -13,16 +15,23 @@ import lombok.NoArgsConstructor;
  */
 
 @Data
+@TableName("t_employee")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
 
+    @TableId
     private Integer eid;
 
+//    @NonNull
     private String department;
 
+//    @NonNull
     private String name;
 
+//    @NonNull
     private String type;
 
+//    @NonNull
+//    private List<NestedTestObject> testObjects;
 }

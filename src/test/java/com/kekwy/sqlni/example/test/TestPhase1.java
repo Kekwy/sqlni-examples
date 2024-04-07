@@ -1,4 +1,4 @@
-package com.kekwy.sqlni.example;
+package com.kekwy.sqlni.example.test;
 
 import com.kekwy.sqlni.example.mapper.EmployeeMapper;
 import com.kekwy.sqlni.example.util.SqlSessionUtils;
@@ -20,7 +20,7 @@ public class TestPhase1 {
     public void test01() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         EmployeeMapper mapper = sqlSession.getMapper(EmployeeMapper.class);
-        System.out.println(mapper.getEmployees());
+//        System.out.println(mapper.getEmployees());
         sqlSession.close();
     }
 
