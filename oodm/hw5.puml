@@ -1,0 +1,33 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+'skinparam linetype ortho
+
+interface Thermometer {
+~ read()
+}
+class CommonThermometer {
++ read()
+}
+interface Heater {
+~ engage()
+~ disengage()
+}
+class ElectricHeater {
++ engage()
++ void disengage()
+}
+class Regulate {
+}
+
+
+Thermometer <|.. CommonThermometer
+Heater <|.. ElectricHeater
+
+hide Regulate circle
+
+Regulate --> Thermometer
+Regulate --> Heater
+
+@enduml

@@ -2,8 +2,10 @@ package com.kekwy.sqlni.example.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.kekwy.sqlni.example.TypeHandlerDemo;
 import com.kekwy.sqlni.example.entity.Employee;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
@@ -37,7 +39,9 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
                     @Result(id = true, property = "eid", column = "eid", javaType = Integer.class, jdbcType = JdbcType.INTEGER),
                     @Result(property = "department", column = "department", javaType = String.class, jdbcType = JdbcType.VARCHAR),
                     @Result(property = "name", column = "name", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-                    @Result(property = "type", column = "type", javaType = String.class, jdbcType = JdbcType.VARCHAR)
+                    @Result(property = "type", column = "type", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+                    @Result(property = "test", column = "test_id", one = @One(select = "com.kekwy.sqlni.example.mapper.TestMapper.getTypeString", fetchType = FetchType.LAZY)),
+                    @Result(property = "test2", column = "test2_id", many = @Many(select = "com.kekwy.sqlni.example.mapper.TestMapper.getTypeString"))
             }
     )
     Employee getEmployeeByName(String name);
@@ -48,6 +52,15 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
             FROM t_employee
             WHERE department = 'temp'
             """)
+    @Results(
+            id = "asdfads",
+            value = {
+                    @Result(id = true, property = "asdf", column = "eid", javaType = Integer.class, jdbcType = JdbcType.INTEGER),
+                    @Result(property = "dfg", column = "xcv", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+                    @Result(property = "xcv", column = "type", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+                    @Result(property = "test2", column = "xcv", many = @Many(select = "com.kekwy.sqlni.example.mapper.TestMapper.getTypeString"))
+            }
+    )
     String getTypeByNameAndDepartment();
 
 //    @UseSQLNI("SELECT * FROM t_employee LIMIT 2 OFFSET 4;")
@@ -58,6 +71,14 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
             FROM t_employee
             WHERE deparment IS NOT NULL
             """)
+    @Results(
+            id = "asdfads",
+            value = {
+                    @Result(id = true, property = "asdf", column = "eid", javaType = Integer.class, jdbcType = JdbcType.INTEGER),
+                    @Result(property = "dfg", column = "xcv", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+                    @Result(property = "xcv", column = "type", javaType = String.class, jdbcType = JdbcType.VARCHAR, typeHandler = TypeHandlerDemo.class)
+            }
+    )
     List<Employee> getEmployeesWithLimit(int asdfasd, int dsafasdf, String asdfasds);
 
 //    List<Employee> selectByName(String name);
